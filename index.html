@@ -15,6 +15,26 @@
     
     <!-- Your Custom CSS File -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    // ⬇️ VERY IMPORTANT: Replace YOUR_PIXEL_ID with your actual Pixel ID ⬇️
+    fbq('init', 'YOUR_PIXEL_ID');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+
 </head>
 <body>
 
@@ -40,14 +60,13 @@
             <p>Paperback: <strong>$13.99</strong></p>
         </div>
 
-        <!-- NOTE: Replace "#" with your Amazon Attribution link -->
-        <a href="https://www.amazon.com/dp/B0FDLB1Q2W" class="cta-button" data-aos="fade-up" data-aos-delay="500">Proceed to Checkout on Amazon</a>
+        <!-- The class "purchase-btn" is added for tracking -->
+        <a href="https://www.amazon.com/dp/B0FDLB1Q2W" class="cta-button purchase-btn" data-aos="fade-up" data-aos-delay="500">Proceed to Checkout on Amazon</a>
     </section>
 
     <!-- Why Section -->
     <section id="why">
         <div class="background-words" id="background-words"></div>
-
         <h2 data-aos="zoom-in">Why This Book?</h2>
         <div class="text-content" data-aos="fade-up">
             <p>
@@ -67,21 +86,9 @@
         <div class="book-animation-container" data-aos="fade-right">
             <div class="book" id="animated-book">
                 <div class="book-cover">
-                    <!-- 
-                        IMAGE INFO: Book Cover 
-                        - Content: Your 5x8 book cover image.
-                        - Recommended Size: 800px width by 1280px height for good quality.
-                        - Hosting: Replace the link below with a link to your hosted image (e.g., from a site like Imgur or your own web hosting).
-                    -->
                     <img src="images/1.jpg" alt="Feminism Proved By Science Book Cover" onerror="this.onerror=null;this.src='https://placehold.co/800x1280/D94A4A/FFFFFF?text=Book+Cover';">
                 </div>
                 <div class="book-page">
-                    <!-- 
-                        IMAGE INFO: Chapter 1 Page
-                        - Content: An image of the first page of your book's first chapter. It should also be a 5x8 ratio.
-                        - Recommended Size: 800px width by 1280px height.
-                        - Hosting: Replace the link below with a link to your hosted image.
-                    -->
                      <img src="images/chapter 1.png" alt="First page of Chapter 1" onerror="this.onerror=null;this.src='https://placehold.co/800x1280/ffffff/2E2E2E?text=Chapter+1+Preview';">
                 </div>
             </div>
@@ -137,9 +144,9 @@
             <p>
                 The idea to write it came from a very practical need: I wanted to fund my master's degree abroad. But what started as a financial goal quickly became something precious. 
                 I ended up loving the process. Enjoying it. Getting
-addicted to it. This book became precious to me, and I feel
-like I’ve shared an intimate part of myself. You might say I’m exaggerating, but it really does feel this way, and that’s the main reason I didn’t use my real name. I am proud of completing and publishing this—more proud, in fact, than I am of having a computer science bachelor’s degree (yes i wrote the code of this page hehe).
- So, it ended with a piece of my heart poured onto this pages.
+                addicted to it. This book became precious to me, and I feel
+                like I’ve shared an intimate part of myself. You might say I’m exaggerating, but it really does feel this way, and that’s the main reason I didn’t use my real name. I am proud of completing and publishing this—more proud, in fact, than I am of having a computer science bachelor’s degree (yes i wrote the code of this page hehe).
+                So, it ended with a piece of my heart poured onto this pages.
             </p>
         </div>
         <div class="testimonial" data-aos="fade-up" data-aos-delay="100">
@@ -151,8 +158,8 @@ like I’ve shared an intimate part of myself. You might say I’m exaggerating,
     <!-- Closing Section -->
     <section id="closing">
         <h2 data-aos="zoom-in">Convinced Now?</h2>
-        <!-- NOTE: Replace "#" with your Amazon Attribution link -->
-        <a href="https://www.amazon.com/dp/B0FDLB1Q2W" class="cta-button" data-aos="fade-up">Proceed to Checkout on Amazon</a>
+        <!-- The class "purchase-btn" is added for tracking -->
+        <a href="https://www.amazon.com/dp/B0FDLB1Q2W" class="cta-button purchase-btn" data-aos="fade-up">Proceed to Checkout on Amazon</a>
     </section>
     
     <!-- AOS (Animate on Scroll) JS -->

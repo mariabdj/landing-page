@@ -1,7 +1,7 @@
 /*
   Feminism Proved By Science - Landing Page JavaScript
   Author: Nar Suran & Gemini
-  Version: 3.0
+  Version: 4.0 (With Meta Pixel Tracking)
 */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -50,23 +50,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     // --- Floating Background Words in "Why" Section ---
-    // Reduced word count and improved placement logic
     const words = ["MISOGYNY", "PATRIARCHY", "INJUSTICE", "RAGE", "EQUITY", "LOGIC", "PROOF", "STRENGTH"];
     const wordsContainer = document.getElementById('background-words');
     
     if (wordsContainer) {
         const placedWords = [];
-        // Minimum pixel distance between word centers. Larger value for less density.
         const minDistance = window.innerWidth < 768 ? 120 : 200; 
 
-        // Function to check if a new word overlaps with existing ones
-        const checkOverlap = (x, y, rect) => {
+        const checkOverlap = (x, y) => {
             for (const placed of placedWords) {
                 const dx = x - placed.x;
                 const dy = y - placed.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                if (distance < minDistance) {
-                    return true; // Overlap detected
+                if (Math.sqrt(dx * dx + dy * dy) < minDistance) {
+                    return true;
                 }
             }
             return false;
@@ -75,17 +71,16 @@ document.addEventListener('DOMContentLoaded', function() {
         words.forEach(word => {
             const span = document.createElement('span');
             span.textContent = word;
-            wordsContainer.appendChild(span); // Add to DOM to get dimensions
+            wordsContainer.appendChild(span); 
 
             const rect = span.getBoundingClientRect();
             let x, y, attempts = 0;
             
-            // Try up to 100 times to find a non-overlapping position
             do {
                 x = Math.random() * (wordsContainer.offsetWidth - rect.width);
                 y = Math.random() * (wordsContainer.offsetHeight - rect.height);
                 attempts++;
-            } while (checkOverlap(x + rect.width / 2, y + rect.height / 2, rect) && attempts < 100);
+            } while (checkOverlap(x + rect.width / 2, y + rect.height / 2) && attempts < 100);
 
             placedWords.push({ x: x + rect.width / 2, y: y + rect.height / 2 });
             span.style.left = `${x}px`;
@@ -99,13 +94,35 @@ document.addEventListener('DOMContentLoaded', function() {
                     setTimeout(() => {
                         span.style.opacity = '1';
                         span.style.transform = `translate(${Math.random() * 40 - 20}px, ${Math.random() * 40 - 20}px) scale(1.1)`;
-                    }, i * 150); // Stagger the animation
+                    }, i * 150); 
                 });
-                observer.unobserve(entries[0].target); // Stop observing after animation
+                observer.unobserve(entries[0].target);
             }
         }, { threshold: 0.2 });
 
         observer.observe(document.getElementById('why'));
     }
+
+    // --- Meta Pixel Purchase Event Tracking ---
+    // This code finds all buttons with the class "purchase-btn"
+    const purchaseButtons = document.querySelectorAll('.purchase-btn');
+
+    purchaseButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            console.log('Purchase button clicked. Firing Meta Pixel event.');
+            
+            // Check if fbq function exists (to prevent errors if pixel fails to load)
+            if (typeof fbq === 'function') {
+                // Fire the 'Purchase' event with a value of 5 EUR
+                // This will be counted as a "Sale" in your Meta Ads Manager
+                fbq('track', 'Purchase', {
+                    value: 5.00,
+                    currency: 'EUR' 
+                });
+            } else {
+                console.log('fbq is not defined. Meta Pixel might be blocked or not loaded.');
+            }
+        });
+    });
 
 });
