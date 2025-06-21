@@ -1,0 +1,527 @@
+/*
+  Feminism Proved By Science - Landing Page Stylesheet
+  Author: Nar Suran & Gemini
+  Version: 3.0
+*/
+
+/* ------------------- */
+/* Variables & Setup   */
+/* ------------------- */
+:root {
+    --red: #D94A4A;
+    --pale-pink: #FEECEB;
+    --accent-pink-1: #FFD7E5;
+    --accent-pink-2: #F07C81;
+    --charcoal: #2E2E2E;
+    --white: #FFFFFF;
+
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Roboto', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--pale-pink);
+    color: var(--charcoal);
+    margin: 0;
+    overflow-x: hidden; /* Prevents horizontal scroll */
+}
+
+
+/* ------------------- */
+/* Navigation Bar      */
+/* ------------------- */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(254, 236, 235, 0.85);
+    -webkit-backdrop-filter: blur(10px); /* Prefixed version first for compatibility */
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 1rem 5%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--accent-pink-1);
+    transition: background-color 0.3s ease;
+}
+
+nav .logo {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: var(--red);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul a {
+    text-decoration: none;
+    color: var(--charcoal);
+    font-weight: 500;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+nav ul a:hover {
+    color: var(--red);
+}
+
+nav ul a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--red);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+nav ul a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+
+/* ------------------- */
+/* General Sections    */
+/* ------------------- */
+section {
+    padding: 8rem 5% 6rem 5%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    box-sizing: border-box;
+}
+
+
+/* ------------------- */
+/* Hero Section        */
+/* ------------------- */
+#hero {
+    min-height: 100vh;
+}
+
+#hero h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 10vw, 6rem);
+    color: var(--red);
+    margin: 0;
+    line-height: 1.1;
+    font-weight: 900;
+}
+
+#hero p {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    font-family: var(--font-heading);
+    margin-top: 0.5rem;
+    color: var(--charcoal);
+}
+
+.price-container {
+    margin: 1.5rem 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--accent-pink-1);
+    display: inline-block;
+}
+
+.price-container p {
+    margin: 0.5rem 0;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--red);
+    color: var(--white);
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(217, 74, 74, 0.4);
+}
+
+.cta-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(217, 74, 74, 0.6);
+}
+
+.cta-subtext {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--charcoal);
+}
+
+/* ------------------- */
+/* "Why" Section       */
+/* ------------------- */
+#why {
+    background-color: var(--white);
+    overflow: hidden; 
+}
+
+#why h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    color: var(--charcoal);
+    max-width: 800px;
+    z-index: 1; 
+}
+
+#why .text-content {
+     max-width: 650px;
+     line-height: 1.8;
+     font-size: 1.1rem;
+     margin-bottom: 2rem;
+     z-index: 1;
+}
+
+.background-words {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.background-words span {
+    position: absolute;
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 6vw, 6rem);
+    color: var(--pale-pink);
+    opacity: 0;
+    transition: opacity 1s ease, transform 1s ease;
+    will-change: transform;
+    -webkit-user-select: none; /* Safari compatibility */
+    user-select: none;
+}
+
+
+/* ------------------- */
+/* "Solution" Section  */
+/* ------------------- */
+#solution {
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+}
+
+.book-animation-container {
+    flex: 1;
+    max-width: 320px; /* Reduced size for better responsiveness */
+    min-width: 280px;
+    perspective: 1500px;
+}
+
+.book {
+    width: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s ease;
+    cursor: pointer;
+    aspect-ratio: 5 / 8; /* Correct 5x8 aspect ratio */
+}
+
+.book.open {
+    transform: translateX(30%) rotateY(-40deg);
+}
+
+.book-cover, .book-page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 8px;
+}
+
+.book-cover {
+    transform-origin: left;
+    transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    z-index: 10;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2),
+                -4px 0 15px rgba(0,0,0,0.1) inset;
+}
+
+.book.open .book-cover {
+    transform: rotateY(-160deg);
+}
+
+.book-cover img, .book-page img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.book-page {
+    background-color: var(--white);
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+.book-page img {
+    object-fit: contain;
+    padding: 1rem;
+    width: 95%;
+    height: 95%;
+    box-sizing: border-box;
+}
+
+#solution .text-content {
+    flex: 1.2; 
+    max-width: 550px;
+    text-align: left;
+    margin-left: 80px;
+}
+
+#solution h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--red);
+}
+
+#solution p {
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+/* ------------------- */
+/* "Quotes" Section    */
+/* ------------------- */
+#quotes {
+    background-color: var(--white);
+}
+
+#quotes h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    margin-bottom: 3rem;
+    color: var(--charcoal);
+}
+
+.quotes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    max-width: 800px;
+}
+
+.quote-block {
+    padding: 2rem;
+    border-radius: 12px;
+    background-color: var(--pale-pink);
+    border-left: 5px solid var(--accent-pink-2);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.quote-block p {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    line-height: 1.6;
+    color: var(--charcoal);
+}
+
+.quote-block.loud {
+    background-color: var(--red);
+    border-left-color: var(--accent-pink-1);
+    transform: scale(1.05);
+}
+.quote-block.loud p {
+    color: var(--white);
+    font-size: clamp(1.4rem, 4vw, 1.8rem);
+    font-weight: 900;
+}
+.quote-block.loud strong {
+    color: var(--accent-pink-1);
+    font-weight: 900;
+}
+
+
+/* ------------------- */
+/* "Chapters" Section  */
+/* ------------------- */
+#chapters {
+     background-color: var(--pale-pink);
+}
+
+#chapters h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    margin-bottom: 3rem;
+}
+
+.chapters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.chapter-card {
+    aspect-ratio: 1 / 1;
+    perspective: 1000px;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.chapter-card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.card-front {
+    background-color: var(--red);
+    color: var(--white);
+    font-family: var(--font-heading);
+    font-size: 5rem;
+}
+
+.card-back {
+    background-color: var(--charcoal);
+    color: var(--white);
+    transform: rotateY(180deg);
+    padding: 1.5rem;
+    font-weight: 500;
+    line-height: 1.6;
+    box-sizing: border-box;
+}
+
+
+/* ------------------- */
+/* "Author" Section    */
+/* ------------------- */
+#author {
+    background-color: var(--charcoal);
+    color: var(--white);
+}
+
+#author h2 {
+    font-family: var(--font-heading);
+    color: var(--red);
+    font-size: clamp(2rem, 6vw, 3.5rem);
+}
+
+#author .text-content {
+    max-width: 700px;
+    font-size: 1.1rem;
+    line-height: 1.9;
+}
+
+#author .testimonial {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border: 2px solid var(--accent-pink-2);
+    border-radius: 12px;
+    background-color: rgba(240, 124, 129, 0.1);
+    max-width: 700px;
+}
+
+.testimonial p {
+    margin: 0.5rem 0;
+}
+
+
+/* ------------------- */
+/* "Closing" Section   */
+/* ------------------- */
+#closing {
+    min-height: 70vh;
+}
+
+#closing h2 {
+    font-family: var(--font-heading);
+    color: var(--red);
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    margin-bottom: 2rem;
+}
+
+
+/* ------------------- */
+/* Responsive Design   */
+/* ------------------- */
+@media (max-width: 900px) {
+    section {
+        padding: 6rem 5% 4rem 5%;
+    }
+    #solution {
+        flex-direction: column;
+    }
+    #solution .text-content {
+        text-align: center;
+        margin-top: 2rem;
+    }
+    .chapters-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        display: none; /* Mobile menu can be added here if needed */
+    }
+    #hero h1 {
+        line-height: 1.2;
+    }
+    .book.open {
+        transform: translateX(0) rotateY(0); /* Disable hover effect on mobile for better UX */
+    }
+    .book.open .book-cover {
+        transform: rotateY(-160deg); /* Keep open effect on click */
+    }
+}
