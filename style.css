@@ -524,4 +524,9 @@ section {
     .book.open .book-cover {
         transform: rotateY(-160deg); /* Keep open effect on click */
     }
+    #solution .text-content {
+    flex: 1.2; 
+    max-width: 550px;
+    text-align: left;
+}
 }
