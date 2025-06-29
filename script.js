@@ -1,7 +1,7 @@
 /*
   Feminism Proved By Science - Landing Page JavaScript
   Author: Nar Suran & Gemini
-  Version: 5.0 (Tracking "Lead" event)
+  Version: 6.0 (Tracking "AddToCart" event)
 */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -103,19 +103,22 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(document.getElementById('why'));
     }
 
-    // --- Meta Pixel Lead Event Tracking ---
-    // This code finds all buttons with the class "lead-btn"
-    const leadButtons = document.querySelectorAll('.lead-btn');
+    // --- Meta Pixel AddToCart Event Tracking ---
+    // This code finds all buttons with the class "lead-btn" (or any checkout button class you use)
+    const checkoutButtons = document.querySelectorAll('.lead-btn');
 
-    leadButtons.forEach(button => {
+    checkoutButtons.forEach(button => {
         button.addEventListener('click', function() {
-            console.log('Lead button clicked. Firing Meta Pixel event.');
+            console.log('Checkout button clicked. Firing Meta Pixel AddToCart event.');
             
             // Check if fbq function exists (to prevent errors if pixel fails to load)
             if (typeof fbq === 'function') {
-                // Fire the standard 'Lead' event.
-                // This will be counted as a "Lead" in your Meta Ads Manager.
-                fbq('track', 'Lead');
+                // Fire the standard 'AddToCart' event.
+                // This will be counted as an "Add to Cart" in your Meta Ads Manager.
+                fbq('track', 'AddToCart', {
+                    value: 3.00,
+                    currency: 'USD'
+                });
             } else {
                 console.log('fbq is not defined. Meta Pixel might be blocked or not loaded.');
             }
